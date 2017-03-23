@@ -2,7 +2,8 @@ from django.shortcuts import render
 from .models import Case, Report, Author
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 def index(request):
@@ -33,6 +34,17 @@ class CaseListView(LoginRequiredMixin, generic.ListView):
 class CaseDetailView(LoginRequiredMixin, generic.DetailView):
     model = Case
 
+class CaseCreate(CreateView):
+    model = Case
+    fields = '__all__'
+
+class CaseUpdate(UpdateView):
+    model = Case
+    fields = '__all__'
+
+class CaseDelete(DeleteView):
+    model = Case
+    success_url = reverse_lazy('cases') # Redirect to Cases list
 
 class AuthorListView(LoginRequiredMixin, generic.ListView):
     model = Author
@@ -40,3 +52,29 @@ class AuthorListView(LoginRequiredMixin, generic.ListView):
 
 class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Author
+
+class AuthorCreate(CreateView):
+    model = Author
+    fields = '__all__'
+
+class AuthorUpdate(UpdateView):
+    model = Author
+    fields = '__all__'
+
+class AuthorDelete(DeleteView):
+    model = Author
+    success_url = reverse_lazy('authors') # Redirect to Authors list
+
+class ReportCreate(CreateView):
+    model = Report
+    fields = '__all__'
+    success_url = reverse_lazy('cases') # Redirect to Cases list
+
+class ReportUpdate(UpdateView):
+    model = Report
+    fields = '__all__'
+    success_url = reverse_lazy('cases') # Redirect to Cases list
+
+class ReportDelete(DeleteView):
+    model = Report
+    success_url = reverse_lazy('cases') # Redirect to Cases list
