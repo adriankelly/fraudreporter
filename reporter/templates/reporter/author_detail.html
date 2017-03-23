@@ -5,6 +5,21 @@
 
   <div style="margin-left:20px;margin-top:20px">
     <h4>Reports</h4>
-   
+      {% if author.report_set %}
+
+      {% for report in author.report_set.all %}
+      <hr>
+      <p><strong>Case:</strong><a href="{% url 'case-detail' report.case.pk %}"> {{report.case.title}}</a></p>
+      <p><strong>Subject:</strong> {{report.subject}}</p>
+      <p><strong>Created:</strong> {{report.created_date}}</p>
+      <p><strong>Published:</strong> {{report.published_date}}</p>
+      <p><strong>Details:</strong> {{report.details}}</p>
+
+      {% endfor %}
+
+    {% else %}
+      <p>There are no reports from this author.</p>
+    {% endif %}
+
   </div>
 {% endblock %}
