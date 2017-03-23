@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   
-  {% block title %}<title>FraudReport</title>{% endblock %}
+  {% block title %}<title>FraudReporter</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
       <ul class="sidebar-nav">
         <li><a href="{% url 'index' %}">Home</a></li>
           <li><a href="{% url 'cases' %}">All cases</a></li>
-          <li><a href="">All authors</a></li>
+          <li><a href="{% url 'authors' %}">All authors</a></li>
       </ul>
      {% endblock %}
       </div>

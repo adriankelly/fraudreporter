@@ -9,6 +9,15 @@
   <div style="margin-left:20px;margin-top:20px">
     <h4>Reports</h4>
 
-   
+      {% for report in case.report_set.all %}
+      <hr>
+      <p><strong>Subject:</strong> {{report.subject}}</p>
+      <p><strong>Author:</strong> {{ report.author }}</p>
+      <p><strong>Created:</strong> {{report.created_date}}</p>
+      <p><strong>Published:</strong> {{report.published_date}}</p>
+      <p><strong>Details:</strong> {{report.details}}</p>
+
+      {% endfor %}
+
   </div>
 {% endblock %}
