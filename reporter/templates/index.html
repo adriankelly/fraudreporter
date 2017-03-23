@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>FraudReporter Home</h1>
+
+  <p>Welcome to <em>FraudReporter</em>.</p>
+
+<h2>Current content</h2>
+
+  <p>The site has the following:</p>
+  <ul>
+    <li><strong>Total Cases:</strong> {{ num_cases }}</li>
+    <li><strong>Unresolved Cases:</strong> {{ num_cases_unresolved }}</li>
+    <li><strong>Reports:</strong> {{ num_reports }}</li>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
+  </ul>
+  <hr>
+<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+
+
+{% endblock %}
