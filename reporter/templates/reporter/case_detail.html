@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ case.title }}</h1>
+
+ <p class="{% if case.status == 'r' %}label label-success{% else %}label label-danger{% endif %}">{{ case.get_status_display }}</p>
+
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Reports</h4>
+
+   
+  </div>
+{% endblock %}
