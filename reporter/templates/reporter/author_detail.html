@@ -1,23 +1,25 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>{{ case.title }}</h1>
-
- <p class="{% if case.status == 'r' %}label label-success{% else %}label label-danger{% endif %}">{{ case.get_status_display }}</p>
-
+  <h1>{{ author }}</h1>
 
   <div style="margin-left:20px;margin-top:20px">
     <h4>Reports</h4>
+      {% if author.report_set %}
 
-      {% for report in case.report_set.all %}
+      {% for report in author.report_set.all %}
       <hr>
+      <p><strong>Case:</strong><a href="{% url 'case-detail' report.case.pk %}"> {{report.case.title}}</a></p>
       <p><strong>Subject:</strong> {{report.subject}}</p>
-      <p><strong>Author:</strong> <a href="{% url 'author-detail' report.author.pk %}">{{ report.author }}</a></p>
       <p><strong>Created:</strong> {{report.created_date}}</p>
       <p><strong>Published:</strong> {{report.published_date}}</p>
       <p><strong>Details:</strong> {{report.details}}</p>
 
       {% endfor %}
+
+    {% else %}
+      <p>There are no reports from this author.</p>
+    {% endif %}
 
   </div>
 {% endblock %}

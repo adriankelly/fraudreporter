@@ -43,7 +43,8 @@ class Report(models.Model):
     """
     Model representing a fraud report.
     """
-    case = models.ForeignKey('Case', on_delete=models.CASCADE) 
+    case = models.ForeignKey('Case', on_delete=models.CASCADE)
+    author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
     subject = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(null=True, blank=True)
