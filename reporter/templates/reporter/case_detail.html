@@ -12,7 +12,7 @@
       {% for report in case.report_set.all %}
       <hr>
       <p><strong>Subject:</strong> {{report.subject}}</p>
-      <p><strong>Author:</strong> {{ report.author }}</p>
+      <p><strong>Author:</strong> <a href="{% url 'author-detail' report.author.pk %}">{{ report.author }}</a></p>
       <p><strong>Created:</strong> {{report.created_date}}</p>
       <p><strong>Published:</strong> {{report.published_date}}</p>
       <p><strong>Details:</strong> {{report.details}}</p>
